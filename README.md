@@ -11,5 +11,5 @@
 * Player uses droid and currency to travel to different locales 
 * In each locale, the player can trade for an item and / or a piece of the plans
 * Everyone wants something different (i.e. player may barter for an object in locale 1 to get a piece of the plans in locale 2)
-* Player recieves all pieces the plans and wins 
+* Player recovers all pieces of the plans and wins 
 
