@@ -1,7 +1,8 @@
 # Hacker2021
 ## modern take on an old classic in python - hack in and save the world 
-## TechStack: Python3, VS Code, and of course GitHub 
+
 ##### written on a mac
+## TechStack: Python3, VS Code, and of course GitHub 
 
 * Player is a hacker attempting to hack into MAGMA LTD. mainframe 
 * Player enters system and discovers plans for world domination, they exist, but have been moved
