@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 import time
 import crayons
+import os
 
 # create a customizable player
 
-
 def welcome():
+    os.system('clear')
     print("\nYou see a blank screen. It blinks a few times. Then in the center appears: \n")
     login = ""
     round = 0
@@ -132,3 +133,13 @@ while True:
     if len(inventory) == 5:
         print(crayons.magenta("\nYou Win - You saved the world from MAGMA LTD. dominiation!!! :) :) :) :) \n"))
         break
+
+
+# to do -
+# add agents and more info at each locale 
+# add swapping with agents for the page of plans / gifts
+# add time constraint for whole game
+# add pop-ups indicating MAGMA has noticed a breach in security and will be shutting the droids and tunnels 
+# ascii art of each locale
+# winner ascii art
+# clear terminal before beginning
