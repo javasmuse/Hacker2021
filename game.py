@@ -19,6 +19,7 @@ def welcome():
             print("\n Third try - Sorry Locked Out - Try ...")
             time.sleep(2)
             print("\n bugs... bugs... bugs... Is it a bug or a feature? .... \n instead of being locked out, the system put you through to the mainframe ")
+            time.sleep(3)
     mainframe()
 
 
@@ -27,7 +28,7 @@ def mainframe():
     print(crayons.cyan("MAGMA LTD. - Interal System Bulletins\n"))
     print(crayons.red("TOP SECRET - World Domination Plans have been relocated for security. One page has been sent to an agent in each of our affiliated countries.\n"))
     time.sleep(3)
-    print("Hmmm, you think, wasn't their a reward for thwarting evil plans? How can I get those? \n Further down the screen you notice: \n")
+    print("Hmmm, you think, wasn't there a reward posted for thwarting evil plans? How can I get those? \n Further down the screen you notice: \n")
     time.sleep(3)
     print(crayons.cyan("The travel droid is fully charged.\n"))
     time.sleep(3)
@@ -37,6 +38,8 @@ def mainframe():
         if action == "1":
             print(
                 "Good thinking those agents could be dangerous. Maybe go play a safer game like Mario. Goodbye")
+            time.sleep(3)
+            endGame()
             break
         elif action == "2":
             print("Excellent choice - your adventure begins!!")
@@ -45,10 +48,21 @@ def mainframe():
         elif action != "2" and action != "1":
             action = input(crayons.cyan("> ")).strip()
 
+# END GAME
+def endGame():
+    os.system("clear")
+    time.sleep(3)
+    print(crayons.yellow('Goodbye'))
 
+# intro to travel droid
 def travelDroid():
     print(crayons.cyan("Hello, I'm a travel droid. I travel underground at the speed of light through special MAGMA LTD. designed tunnels. My charge is good for three hours. I'm also able to impersonate a MAGMA LTD. official. I may be useful in recovering the plans.\n\nSimple use instruction: to Move: type go with a direction, to Get: type get with an object. \ni.e. go Japan OR get jade\n"))
     time.sleep(3)
+    playYeaNay = input("Would you like to use the travel droid? \n Enter 1 - Could be a trick, maybe quit? \n Enter 2 - Heck yea, go! \n> ")
+    if playYeaNay == "1":
+        endGame()
+    elif playYeaNay == "2":
+        pass
 
 def showStatus():
     print(crayons.cyan('--------------------------'))
@@ -116,7 +130,7 @@ while True:
 
     # if they type 'get' first
     if move[0] == 'get':
-        # if the room contains an item, and the item is one they want to get
+        # if the locale contains an item, and the item is one they want to get
         if "item" in locales[currentLocale] and move[1] in locales[currentLocale]['item']:
             # add the item to their inventory
             inventory += [move[1]]
@@ -129,11 +143,10 @@ while True:
             # tell them they can't get it
             print(crayons.cyan(f"The {move[1]} is not here."))
 
-        # Define how a player can win
+    # Define how a player can win
     if len(inventory) == 5:
         print(crayons.magenta("\nYou Win - You saved the world from MAGMA LTD. dominiation!!! :) :) :) :) \n"))
         break
-
 
 # to do -
 # add agents and more info at each locale 
