@@ -17,7 +17,7 @@ def welcome():
         elif round == 3:
             print("\n Third try - Sorry Locked Out - Try ...")
             time.sleep(2)
-            print("\n bugs... bugs... bugs... Is it a bug or a feature? .... \n instead of being locked out the system put you through. ")
+            print("\n bugs... bugs... bugs... Is it a bug or a feature? .... \n instead of being locked out, the system put you through to the mainframe ")
     mainframe()
 
 
@@ -48,25 +48,86 @@ def mainframe():
 def travelDroid():
     print(crayons.blue("Hello, I'm a travel droid. I travel underground at the speed of light through special MAGMA LTD. designed tunnels. My charge is good for three hours. I'm also able to impersonate a MAGMA LTD. official. I may be useful in recovering the plans.\nSimple use instruction: to Move: type go with a direction, to Get: type get with an object. \ni.e. go Japan OR get jade"))
 
+def showStatus():
+    print(crayons.blue('--------------------------'))
+    print(crayons.blue('You are in ' + currentLocale))
+    # print players inventory
+    print(crayons.blue("Your inventory includes: " + str(inventory)))
+    # print an item if there is one in the room
+    if "item" in locales[currentLocale]:
+        print(crayons.blue("You see a " + locales[currentLocale]['item']))
+    print(crayons.blue('--------------------------'))
+
 
 # PLAYERS INVENTORY
-inventory = []
+inventory = ["Bitcoin"]
 
 # DICTIONARY LINKING LOCALES TO OTHER LOCALES
 locales = {
     'Japan': {
-        'south': 'China',
+        'east': 'Germany',
         'west': 'Russia',
-        'item': 'small fun droid'
+        'item': 'mini-droid'
     },
-
     'Russia': {
         'east': 'Japan',
-        'west': 'Germany',
+        'south': 'China',
         'item': 'caviar'
+    }, 
+    'China' : {
+        'north' : 'Russia',
+        'west' : 'Germany',
+        'item' : 'jade'
+    }, 
+    'Germany' : {
+        'east' : 'Japan',
+        'west' : 'Russia',
+        'item' : 'beer'
     }
-
 }
 
+currentLocale = "Germany"
 
 welcome()
+
+# FOREVER BEGIN
+while True:
+    showStatus()
+
+    # GET PLAYERS ACTION CHOICE
+    move = ''
+    while move == '':
+        move = input(crayons.blue('> '))
+
+    # split allow items to have a space - it removes the space and takes each word as an element, we want the secone one or idx 1
+    move = move.lower().split(" ", 1)
+
+    # if they type 'go' first
+    if move[0] == 'go':
+        # check their move is possible from current locale
+        if move[1] in locales[currentLocale]:
+            # set the current locale to the new locale
+            currentLocale = locales[currentLocale][move[1]]
+        # if there is no portal to the entered locale
+        else:
+            print(crayons.blue("Sorry that is not an option. The tunnels are amazing, but the lines are limited as yet."))
+
+    # if they type 'get' first
+    if move[0] == 'get':
+        # if the room contains an item, and the item is one they want to get
+        if "item" in locales[currentLocale] and move[1] in locales[currentLocale]['item']:
+            # add the item to their inventory
+            inventory += [move[1]]
+            # display a helpful message
+            print(crayons.blue("Got it! The "))
+            # delete the item from the room
+            del locales[currentLocale]['item']
+        # otherwise if the item isn't there to get
+        else:
+            # tell them they can't get it
+            print(crayons.blue(f"The {move[1]} is not here."))
+
+        # Define how a player can win
+    if len(inventory) == 5:
+        print(crayons.green("You Win - You saved the world from MAGMA LTD. dominiation!!! :) :) :) :) "))
+        break
