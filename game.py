@@ -81,8 +81,8 @@ locales = {
         'item' : 'jade'
     }, 
     'Germany' : {
-        'east' : 'Japan',
-        'west' : 'Russia',
+        'west' : 'Japan',
+        'east' : 'Russia',
         'item' : 'beer'
     }
 }
