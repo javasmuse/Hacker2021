@@ -120,7 +120,7 @@ while True:
             # add the item to their inventory
             inventory += [move[1]]
             # display a helpful message
-            print(crayons.cyan("\nGot it! All the gifts from the agents inclue a page of the plans! "))
+            print(crayons.cyan("\nGot it! All the gifts from the agents include a page of the plans! "))
             # delete the item from the room
             del locales[currentLocale]['item']
         # otherwise if the item isn't there to get
